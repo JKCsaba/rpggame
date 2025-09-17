@@ -22,7 +22,7 @@ namespace rpggame.Entity
 
             int xpdrop = _random.Next(10) + (level * 3);
             int golddrop = _random.Next(15) + (level * 2);
-            int pointdrop = _random.Next(20) + level * 2;
+            int pointdrop = _random.Next(1,20) + level * 2;
 
             Enemy _enemy = new(name, enemyhp, enemyatk, xpdrop, golddrop, pointdrop);
             return _enemy;

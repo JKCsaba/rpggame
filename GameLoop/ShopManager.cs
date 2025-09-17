@@ -51,7 +51,7 @@ namespace rpggame.GameLoop
             this.Flush();
             for (int i = 0; i < 10; i++)
             {
-                Item item = _itemFactory.CreateRandTypeItem(_random.Next(0,3) * 3 + level * _random.Next(0,5));
+                Item item = _itemFactory.CreateRandTypeItem(_random.Next(0,3) * 3 + level * _random.Next(1,5));
                 this.AddItem(item);
             }
             if (Stock.Count > 0) return "The shop has been refilled with new merchandise.";

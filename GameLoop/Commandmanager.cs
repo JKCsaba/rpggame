@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace rpggame.GameLoop
 {
-    public class Commandmanager
+    public class CommandManager
     {
         private readonly Dictionary<string, ICommand> _commands;
         private Player _player;
         private ShopManager _shopManager;
 
-        public Commandmanager()
+        public CommandManager()
         {
             _commands = new Dictionary<string, ICommand>
             {

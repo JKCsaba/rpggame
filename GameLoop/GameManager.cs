@@ -83,6 +83,7 @@ namespace rpggame.GameLoop
             string playername = Console.ReadLine();
             _player = new(playername);
             _shopManager = new();
+            _commandManager = new();
             Console.WriteLine($"Welcome, {_player.Name}, your Journey begins.");
             Console.WriteLine("End of introduction. Type help to see the list of commands.\n");
             Thread.Sleep(1000);

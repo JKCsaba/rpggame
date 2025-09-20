@@ -47,7 +47,7 @@ namespace rpggame.GameLoop
             {
                 int oldlv = _player.CurrentLevel();
                 _player.AddXp(_enemy.XpDrop);
-                _player.Wins++;
+                _player.AddWin();
                 string result = $"You've ecnountered a(n) {_enemy.Name} and defeated it.\nYou inflicted {inflicted} damage and have taken {taken} damage.\nRemaining Hp:{_player.CurrentHp}\n\nYou have recieved {_enemy.XpDrop} Xp.";
                 if (drop >= 3)
                 {

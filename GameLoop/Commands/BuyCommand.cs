@@ -19,10 +19,10 @@ namespace rpggame.GameLoop.Commands
             int sl = shopManager.IsAValidSlot(args[0]);
             if (sl == -1) return "Invalid itemslot";
             Item item = shopManager.Stock[sl - 1];
-            if (player.CurrentGold() < (item.Points*2)) return $"You don't have enough money to buy this {item.Name}!(costs:{item.Points*2}, You have:{player.CurrentGold()})";
+            if (player.Gold < (item.Points*2)) return $"You don't have enough money to buy this {item.Name}!(costs:{item.Points*2}, You have:{player.Gold})";
             player.AddItem(item);
             player.RemoveGold((item.Points * 2));
-            string answer = $"You've bought a(n) {item.Name} for {item.Points * 2} Gold(s). (You have {player.CurrentGold()} Golds remaining)";
+            string answer = $"You've bought a(n) {item.Name} for {item.Points * 2} Gold(s). (You have {player.Gold} Golds remaining)";
             shopManager.RemoveItem(item);
             return answer;
         }

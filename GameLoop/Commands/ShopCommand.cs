@@ -12,7 +12,7 @@ namespace rpggame.GameLoop.Commands
         public string Execute(Player player, ShopManager shopManager, string[] args)
         {
             string answer = shopManager.ListItems();
-            answer += $"\nYou have {player.CurrentGold()} Golds.";
+            answer += $"\nYou have {player.Gold} Golds.";
             return answer;
         }
         

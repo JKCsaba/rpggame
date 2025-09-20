@@ -9,31 +9,27 @@ namespace rpggame.Entity
 {
     public class Player : Entity
     {
-        private int _gold { get; set; }
-        private int _xp;
-        public int Wins { get; set; }
+        public int Gold { get; private set; }
+        public int Xp { get; private set; }
+        public int Wins { get; private set; }
         public List<Item> Inventory { get; } = new();
         private Weapon? _weaponslot = null;
         private Armor? _armorslot = null;
 
         public Player(string Name="Player", int Hp=100, int Atk=10) : base(Name,Hp,Atk)
         {
-            _gold = 0;
-            _xp = 0;
+            Gold = 0;
+            Xp = 0;
             Wins = 0;
         }
 
         public int CurrentLevel()
         {
-            return (int)Math.Sqrt(_xp / 50.0) + 1;
-        }
-        public int CurrentXP()
-        {
-            return _xp;
+            return (int)Math.Sqrt(Xp / 50.0) + 1;
         }
         public void AddXp(int xp)
         {
-            this._xp += xp;
+            this.Xp += xp;
         }
         public int XpRequiredForNextLevel()
         {
@@ -42,7 +38,7 @@ namespace rpggame.Entity
         public int XpRemainingToNextLevel()
         {
             int required = XpRequiredForNextLevel();
-            int remaining = required - this._xp;
+            int remaining = required - this.Xp;
             return remaining > 0 ? remaining : 0;
         }
         public int MaxHp()
@@ -53,15 +49,15 @@ namespace rpggame.Entity
         }
         public void AddGold(int gold)
         {
-            this._gold += gold;
+            this.Gold += gold;
         }
-        public int CurrentGold()
+        public void AddWin()
         {
-            return _gold;
+            this.Wins++;
         }
         public void RemoveGold(int gold)
         {
-            this._gold -= gold;
+            this.Gold -= gold;
         }
         #region inventory
         public string ListInventory()
@@ -142,7 +138,7 @@ namespace rpggame.Entity
         {
             Item item = this.EquippedArmor();
             this._armorslot = null;
-            this.AddItem(item);
+            if (item != null) this.AddItem(item);
             if (this.CurrentHp > this.MaxHp()) this.CurrentHp = this.MaxHp();
         }
         public void EquipWeapon(Weapon weapon)
@@ -168,11 +164,11 @@ namespace rpggame.Entity
         {
             Item item = this.EquippedWeapon();
             this._weaponslot = null;
-            this.AddItem(item);
+            if (item != null) this.AddItem(item);
         }
         public string Stats()
         {
-            string stats = ($"Your stats:\nName: {this.Name}\nCurrent Level: {this.CurrentLevel()} (You need {this.XpRemainingToNextLevel()} Xp for the next level)\nHp: {this.CurrentHp}/{this.MaxHp()}\t Attack: {this.FinalAtk()}\nCurrent Armor: {this.EquippedArmorName()}\nCurrent Weapon: {this.EquippedWeaponName()}\nGold:{this._gold}\tEnemies defeated:{this.Wins}");
+            string stats = ($"Your stats:\nName: {this.Name}\nCurrent Level: {this.CurrentLevel()} (You need {this.XpRemainingToNextLevel()} Xp for the next level)\nHp: {this.CurrentHp}/{this.MaxHp()}\t Attack: {this.FinalAtk()}\nCurrent Armor: {this.EquippedArmorName()}\nCurrent Weapon: {this.EquippedWeaponName()}\nGold:{this.Gold}\tEnemies defeated:{this.Wins}");
             return stats;
         }
     }

@@ -21,7 +21,7 @@ namespace rpggame.GameLoop.Commands
             Item item = player.Inventory[sl-1];
             shopManager.AddItem(item);
             player.AddGold((item.Points*2));
-            string answer = $"You've sold a(n) {item.Name} for {item.Points * 2} Gold(s). You currently have {player.CurrentGold()} Golds.";
+            string answer = $"You've sold a(n) {item.Name} for {item.Points * 2} Gold(s). You currently have {player.Gold} Golds.";
             player.RemoveItem(item);
             return answer;
         }

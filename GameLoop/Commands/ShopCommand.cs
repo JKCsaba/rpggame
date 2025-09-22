@@ -9,7 +9,7 @@ namespace rpggame.GameLoop.Commands
 {
     internal class ShopCommand : ICommand
     {
-        public string Execute(Player player, ShopManager shopManager, string[] args)
+        public string Execute(Player player, ShopManager shopManager, SaveLoadManager saveLoadManager, string[] args)
         {
             string answer = shopManager.ListItems();
             answer += $"\nYou have {player.Gold} Golds.";

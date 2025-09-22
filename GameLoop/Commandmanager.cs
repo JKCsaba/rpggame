@@ -13,6 +13,7 @@ namespace rpggame.GameLoop
         private readonly Dictionary<string, ICommand> _commands;
         private Player _player;
         private ShopManager _shopManager;
+        private SaveLoadManager _saveLoadManager;
 
         public CommandManager()
         {
@@ -33,7 +34,7 @@ namespace rpggame.GameLoop
                 {"load", new LoadCommand() }
             };
         }
-        public string ProcessCommand(Player player, ShopManager shopManager, string input)
+        public string ProcessCommand(Player player, ShopManager shopManager, SaveLoadManager saveLoadManager, string input)
         {
             string[] parts = input.Trim().ToLower().Split(' ');
 
@@ -43,7 +44,7 @@ namespace rpggame.GameLoop
 
             if (_commands.ContainsKey(commandName))
             {
-                return _commands[commandName].Execute(player, shopManager, args);
+                return _commands[commandName].Execute(player, shopManager, saveLoadManager, args);
             }
             else
             {

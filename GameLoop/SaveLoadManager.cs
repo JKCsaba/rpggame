@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace rpggame.GameLoop
 {
-    public interface ICommand
+    public class SaveLoadManager
     {
-        string Execute(Player player, ShopManager shopManager, SaveLoadManager saveLoadManager, string[] args);
+    
+
     }
 }

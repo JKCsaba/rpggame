@@ -9,7 +9,7 @@ namespace rpggame.GameLoop.Commands
 {
     public class StatsCommand : ICommand
     {
-        public string Execute(Player player, ShopManager shopManager, string[] args)
+        public string Execute(Player player, ShopManager shopManager, SaveLoadManager saveLoadManager, string[] args)
         {
             return player.Stats();
         }

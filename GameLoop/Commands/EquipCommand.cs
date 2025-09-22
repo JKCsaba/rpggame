@@ -10,7 +10,7 @@ namespace rpggame.GameLoop.Commands
 {
     public class EquipCommand : ICommand
     {
-        public string Execute(Player player, ShopManager shopManager, string[] args)
+        public string Execute(Player player, ShopManager shopManager, SaveLoadManager saveLoadManager, string[] args)
         {
             if (args.Length == 0)
             {

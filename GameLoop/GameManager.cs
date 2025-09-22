@@ -13,6 +13,7 @@ namespace rpggame.GameLoop
         private Player _player;
         private ShopManager _shopManager;
         private CommandManager _commandManager;
+        private SaveLoadManager _saveLoadManager;
 
         private bool gameisactive;
         string command;
@@ -101,7 +102,7 @@ namespace rpggame.GameLoop
                 Console.WriteLine(">");
                 command = Console.ReadLine();
                 Console.ForegroundColor = normalcolor;
-                string result = _commandManager.ProcessCommand(_player,_shopManager, command);
+                string result = _commandManager.ProcessCommand(_player,_shopManager, _saveLoadManager, command);
                 Console.WriteLine("\n" + result);
 
                 if (!_player.Alive)

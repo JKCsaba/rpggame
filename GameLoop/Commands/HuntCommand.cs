@@ -10,7 +10,7 @@ namespace rpggame.GameLoop.Commands
 {
     public class HuntCommand : ICommand
     {
-        public string Execute(Player player, ShopManager shopManager, string[] args)
+        public string Execute(Player player, ShopManager shopManager, SaveLoadManager saveLoadManager, string[] args)
         {
             EnemyFactory _enemyFactory = new();
             Enemy _enemy = _enemyFactory.CreateRandEnemy(player);

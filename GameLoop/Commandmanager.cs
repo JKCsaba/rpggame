@@ -28,7 +28,9 @@ namespace rpggame.GameLoop
                 {"buy", new BuyCommand() },
                 {"shop", new ShopCommand() },
                 {"equip", new EquipCommand() },
-                {"unequip", new UnequipCommand() }
+                {"unequip", new UnequipCommand() },
+                {"save", new SaveCommand() },
+                {"load", new LoadCommand() }
             };
         }
         public string ProcessCommand(Player player, ShopManager shopManager, string input)
